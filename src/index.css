@@ -1,0 +1,54 @@
+
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/* 
+  Infinite ticker animation
+  Uses duplicated content (0 → -50%)
+*/
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Base ticker */
+.ticker {
+  display: inline-flex;
+  width: max-content;
+  will-change: transform;
+  animation-name: scroll-left;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 18s; /* desktop default */
+}
+
+/* ⏸ Pause on hover */
+.ticker:hover {
+  animation-play-state: paused;
+}
+
+/* 📱 Mobile – slower (less width to travel) */
+@media (max-width: 640px) {
+  .ticker {
+    animation-duration: 28s;
+  }
+}
+
+/* 💻 Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .ticker {
+    animation-duration: 22s;
+  }
+}
+
+/* 🖥 Large screens – faster (more width) */
+@media (min-width: 1280px) {
+  .ticker {
+    animation-duration: 16s;
+  }
+}

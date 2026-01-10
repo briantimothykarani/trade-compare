@@ -1,0 +1,95 @@
+
+[
+  {
+    "id": "xtb",
+    "name": "XTB",
+    "logo": "/logos/xtb.png",
+    "trustScore": 5,
+    "regulators": ["FCA","CySEC","KNF"],
+    "country": "Poland",
+    "region": "Europe",
+    "minDeposit": 0,
+    "accountTypes": ["spread-only","commission"],
+    "assets": {"forex": true,"futures": true,"commodities": true,"indices": true,"crypto": true,"stocks": true},
+    "platforms": {"mt4": true,"mt5": true,"ctrader": false},
+    "beginnerFriendly": true,
+    "scalpingAllowed": true,
+    "affiliateLink": "https://affiliate-link"
+  },
+  {
+    "id": "ic-markets",
+    "name": "IC Markets",
+    "logo": "/logos/icmarkets.png",
+    "trustScore": 5,
+    "regulators": ["ASIC","CySEC"],
+    "country": "Australia",
+    "region": "Oceania",
+    "minDeposit": 200,
+    "accountTypes": ["ecn","commission","spread-only"],
+    "assets": {"forex": true,"futures": false,"commodities": true,"indices": true,"crypto": true,"stocks": true},
+    "platforms": {"mt4": true,"mt5": true,"ctrader": true},
+    "beginnerFriendly": true,
+    "scalpingAllowed": true,
+    "affiliateLink": "https://affiliate-link"
+  },
+  {
+    "id": "etoro",
+    "name": "eToro",
+    "logo": "/logos/etoro.png",
+    "trustScore": 4,
+    "regulators": ["FCA","CySEC","ASIC"],
+    "country": "Israel",
+    "region": "Europe",
+    "minDeposit": 50,
+    "accountTypes": ["spread-only"],
+    "assets": {"forex": true,"futures": false,"commodities": true,"indices": true,"crypto": true,"stocks": true},
+    "platforms": {"mt4": false,"mt5": false,"ctrader": false},
+    "beginnerFriendly": true,
+    "scalpingAllowed": false,
+    "affiliateLink": "https://affiliate-link"
+  },
+  {
+    "id": "ig",
+    "name": "IG",
+    "logo": "/logos/ig.png",
+    "trustScore": 5,
+    "regulators": ["FCA","ASIC","BaFin"],
+    "country": "United Kingdom",
+    "region": "Europe",
+    "minDeposit": 300,
+    "accountTypes": ["spread-only"],
+    "assets": {"forex": true,"futures": true,"commodities": true,"indices": true,"crypto": false,"stocks": true},
+    "platforms": {"mt4": true,"mt5": true,"ctrader": false},
+    "beginnerFriendly": false,
+    "scalpingAllowed": true,
+    "affiliateLink": "https://affiliate-link"
+  },
+  {
+    "id": "plus500",
+    "name": "Plus500",
+    "logo": "/logos/plus500.png",
+    "trustScore": 4,
+    "regulators": ["CySEC","FCA","ASIC"],
+    "country": "Israel",
+    "region": "Europe",
+    "minDeposit": 100,
+    "accountTypes": ["spread-only"],
+    "assets": {"forex": true,"futures": false,"commodities": true,"indices": true,"crypto": true,"stocks": true},
+    "platforms": {"mt4": false,"mt5": false,"ctrader": false},
+    "beginnerFriendly": true,
+    "scalpingAllowed": false,
+    "affiliateLink": "https://affiliate-link"
+  },
+
+  { "id": "pepperstone", "name": "Pepperstone", "logo": "/logos/pepperstone.png", "trustScore": 5, "regulators": ["ASIC","FCA"], "country": "Australia", "region": "Oceania", "minDeposit": 0, "accountTypes": ["ecn","commission"], "assets": {"forex": true,"futures": true,"commodities": true,"indices": true,"crypto": true,"stocks": true}, "platforms": {"mt4": true,"mt5": true,"ctrader": true}, "beginnerFriendly": true, "scalpingAllowed": true, "affiliateLink": "https://affiliate-link" },
+  { "id": "fxpro", "name": "FXPro", "logo": "/logos/fxpro.png", "trustScore": 4, "regulators": ["FCA","CySEC"], "country": "United Kingdom", "region": "Europe", "minDeposit": 100, "accountTypes": ["spread-only","commission"], "assets": {"forex": true,"futures": false,"commodities": true,"indices": true,"crypto": false,"stocks": true}, "platforms": {"mt4": true,"mt5": true,"ctrader": false}, "beginnerFriendly": true, "scalpingAllowed": true, "affiliateLink": "https://affiliate-link" },
+  
+  { "id": "trading212", "name": "Trading 212", "logo": "/logos/trading212.png", "trustScore": 4, "regulators": ["FCA","Bulgarian FSC"], "country": "United Kingdom", "region": "Europe", "minDeposit": 0, "accountTypes": ["spread-only"], "assets": {"forex": true,"futures": false,"commodities": true,"indices": true,"crypto": true,"stocks": true}, "platforms": {"mt4": false,"mt5": false,"ctrader": false}, "beginnerFriendly": true, "scalpingAllowed": false, "affiliateLink": "https://affiliate-link" },
+  { "id": "fp-markets", "name": "FP Markets", "logo": "/logos/fpmarkets.png", "trustScore": 4, "regulators": ["ASIC","CySEC"], "country": "Australia", "region": "Oceania", "minDeposit": 100, "accountTypes": ["ecn","commission","spread-only"], "assets": {"forex": true,"futures": true,"commodities": true,"indices": true,"crypto": false,"stocks": true}, "platforms": {"mt4": true,"mt5": true,"ctrader": false}, "beginnerFriendly": true, "scalpingAllowed": true, "affiliateLink": "https://affiliate-link" },
+
+  { "id": "xm", "name": "XM", "logo": "/logos/xm.png", "trustScore": 4, "regulators": ["ASIC","CySEC"], "country": "Cyprus", "region": "Europe", "minDeposit": 5, "accountTypes": ["cent","spread-only"], "assets": {"forex": true,"futures": false,"commodities": true,"indices": true,"crypto": false,"stocks": true}, "platforms": {"mt4": true,"mt5": true,"ctrader": false}, "beginnerFriendly": true, "scalpingAllowed": false, "affiliateLink": "https://affiliate-link" },
+  { "id": "capitalcom", "name": "Capital.com", "logo": "/logos/capitalcom.png", "trustScore": 4, "regulators": ["FCA","CySEC"], "country": "United Kingdom", "region": "Europe", "minDeposit": 10, "accountTypes": ["spread-only"], "assets": {"forex": true,"futures": false,"commodities": true,"indices": true,"crypto": true,"stocks": true}, "platforms": {"mt4": false,"mt5": false,"ctrader": false}, "beginnerFriendly": true, "scalpingAllowed": false, "affiliateLink": "https://affiliate-link" },
+
+
+  { "id": "ava-trade", "name": "AvaTrade", "logo": "/logos/avatrade.png", "trustScore": 4, "regulators": ["Central Bank of Ireland"], "country": "Ireland", "region": "Europe", "minDeposit": 100, "accountTypes": ["spread-only"], "assets": {"forex": true,"futures": false,"commodities": true,"indices": true,"crypto": true,"stocks": true}, "platforms": {"mt4": true,"mt5": true,"ctrader": false}, "beginnerFriendly": true, "scalpingAllowed": true, "affiliateLink": "https://affiliate-link" }
+]
