@@ -1,34 +1,3 @@
-/*import { Link } from "react-router-dom";
-import { useDarkMode } from "../hooks/useDarkMode";
-
-const Navbar = () => {
-  const { enabled, toggle } = useDarkMode();
-
-  return (
-    <nav className="bg-white dark:bg-gray-900 border-b">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
-        <Link to="/" className="font-bold text-blue-500 text-xl">
-          Trade Compare
-        </Link>
-
-        <div className="flex gap-6 items-center">
-          <Link to="/education" className="text-red-500 hover:text-blue-500">
-            Education
-          </Link>
-          <button
-            onClick={toggle}
-            className="px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600"
-          >
-            {enabled ? "☀️ Light" : "🌙 Dark"}
-          </button>
-        </div>
-      </div>
-    </nav>
-  );
-};
-
-export default Navbar;
- */
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Sun, Moon } from "lucide-react";

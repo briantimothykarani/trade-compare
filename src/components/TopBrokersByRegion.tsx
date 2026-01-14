@@ -1,13 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+/*import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Crown, AlertTriangle } from "lucide-react";
 import brokers from "../data/brokers.json";
 import type { Broker } from "../types/broker";
 
-/* ============================================================
-   🌍 COUNTRY-SPECIFIC REGULATION WARNINGS
-   Key = region, Value = warning text
-============================================================ */
 const REGULATION_WARNINGS: Record<string, string> = {
   Europe:
     "EU residents trade CFDs under ESMA leverage restrictions. Capital at risk.",
@@ -18,9 +14,6 @@ const REGULATION_WARNINGS: Record<string, string> = {
   Global: "CFDs are complex instruments with a high risk of losing money.",
 };
 
-/* ============================================================
-   📍 IP-BASED GEO DETECTION (accurate, free)
-============================================================ */
 const fetchUserRegion = async (): Promise<string> => {
   try {
     const res = await fetch("https://ipapi.co/json/");
@@ -37,9 +30,6 @@ const fetchUserRegion = async (): Promise<string> => {
   }
 };
 
-/* ============================================================
-   🏷 WHY THIS BROKER BADGES (derived from data)
-============================================================ */
 const getBadges = (b: Broker): string[] => {
   const badges: string[] = [];
 
@@ -58,24 +48,15 @@ const TopBrokersByRegion = () => {
   const [rotationIndex, setRotationIndex] = useState(0);
   const [showFiveStars, setShowFiveStars] = useState(false);
 
-  /* ============================================================
-     Detect user region on mount
-  ============================================================ */
   useEffect(() => {
     fetchUserRegion().then(setRegion);
   }, []);
 
-  /* ============================================================
-     After 7 seconds → allow random 5★ brokers
-  ============================================================ */
   useEffect(() => {
     const t = setTimeout(() => setShowFiveStars(true), 7000);
     return () => clearTimeout(t);
   }, []);
 
-  /* ============================================================
-     Auto-rotate brokers every X seconds
-  ============================================================ */
   useEffect(() => {
     const interval = setInterval(() => {
       setRotationIndex((i) => i + 1);
@@ -84,18 +65,12 @@ const TopBrokersByRegion = () => {
     return () => clearInterval(interval);
   }, []);
 
-  /* ============================================================
-     Brokers from user's region (highest trust first)
-  ============================================================ */
   const regionBrokers = useMemo(() => {
     return (brokers as Broker[])
       .filter((b) => b.region === region)
       .sort((a, b) => b.trustScore - a.trustScore);
   }, [region]);
 
-  /* ============================================================
-     Random 5★ brokers (appear after delay)
-  ============================================================ */
   const fiveStarBrokers = useMemo(() => {
     if (!showFiveStars) return [];
     return (brokers as Broker[])
@@ -104,9 +79,6 @@ const TopBrokersByRegion = () => {
       .slice(0, 3);
   }, [showFiveStars, region]);
 
-  /* ============================================================
-     Final rotating window
-  ============================================================ */
   const finalList = [...regionBrokers, ...fiveStarBrokers];
   const visible = finalList.slice(rotationIndex, rotationIndex + 5);
 
@@ -121,7 +93,6 @@ const TopBrokersByRegion = () => {
           ⭐ Top Brokers in {region}
         </h3>
 
-        {/* 🌍 Regulation Warning */}
         <div className="flex gap-2 items-start text-xs text-yellow-700 dark:text-yellow-300 bg-yellow-100 dark:bg-yellow-900/30 p-2 rounded mb-4">
           <AlertTriangle size={14} />
           {REGULATION_WARNINGS[region] ?? REGULATION_WARNINGS.Global}
@@ -161,7 +132,6 @@ const TopBrokersByRegion = () => {
                   </a>
                 </div>
 
-                {/* WHY THIS BROKER */}
                 <div className="flex flex-wrap gap-1 mt-2">
                   {getBadges(b).map((badge) => (
                     <span
@@ -177,7 +147,6 @@ const TopBrokersByRegion = () => {
           </AnimatePresence>
         </ul>
 
-        {/* VIEW ALL LINK */}
         <div className="mt-4 text-center">
           <a
             href={`/brokers?region=${region}`}
@@ -185,6 +154,108 @@ const TopBrokersByRegion = () => {
           >
             View all brokers in {region} →
           </a>
+        </div>
+      </motion.div>
+    </aside>
+  );
+};
+
+export default TopBrokersByRegion;
+*/
+
+// Updated: dismissible, re-open, height matches table
+import { useState, useEffect, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { AlertTriangle, Crown, X } from "lucide-react";
+import brokers from "../data/brokers.json";
+import type { Broker } from "../types/broker";
+
+const REGULATION_WARNINGS: Record<string, string> = {
+  Europe:
+    "EU residents trade CFDs under ESMA leverage restrictions. Capital at risk.",
+  Oceania: "Australian brokers are regulated by ASIC. Leverage limits apply.",
+  Asia: "Regulation varies by country. Investor protections may be limited.",
+  "North America":
+    "CFD trading may be restricted or unavailable in your country.",
+  Global: "CFDs are complex instruments with a high risk of losing money.",
+};
+
+const TopBrokersByRegion = ({
+  pinnedBrokers,
+  setPinnedBrokers,
+  compareBrokers,
+  setCompareBrokers,
+}: any) => {
+  const [region, setRegion] = useState("Detecting...");
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    fetch("https://ipapi.co/json/")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.continent_code === "EU") setRegion("Europe");
+        else if (data.continent_code === "OC") setRegion("Oceania");
+        else if (data.continent_code === "AS") setRegion("Asia");
+        else if (data.continent_code === "NA") setRegion("North America");
+        else setRegion("Global");
+      });
+  }, []);
+
+  const regionBrokers = useMemo(() => {
+    return (brokers as Broker[])
+      .filter((b) => b.region === region)
+      .sort((a, b) => b.trustScore - a.trustScore);
+  }, [region]);
+
+  if (!visible)
+    return (
+      <div className="sticky top-24">
+        <button
+          className="text-sm px-2 py-1 rounded bg-gray-200 dark:bg-gray-700"
+          onClick={() => setVisible(true)}
+        >
+          Re-open Top Brokers
+        </button>
+      </div>
+    );
+
+  return (
+    <aside className="w-full lg:w-80 sticky top-24">
+      <motion.div className="bg-white dark:bg-gray-800 border rounded-xl shadow-md p-4">
+        <div className="flex justify-between items-center mb-2">
+          <h3 className="font-semibold text-lg">⭐ Top Brokers in {region}</h3>
+          <button onClick={() => setVisible(false)}>
+            <X size={18} />
+          </button>
+        </div>
+        <div className="flex flex-col gap-3 max-h-[600px] overflow-y-auto">
+          {regionBrokers.map((b) => (
+            <div
+              key={b.id}
+              className="p-3 border rounded-lg flex flex-col gap-2 dark:border-gray-700"
+            >
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <img src={b.logo} alt={b.name} className="h-6" />
+                  <span className="font-medium">{b.name}</span>
+                </div>
+                <span className="font-semibold text-yellow-500">
+                  {b.trustScore}★
+                </span>
+              </div>
+              <div className="text-xs text-gray-500">
+                {b.beginnerFriendly && "Beginner Friendly, "}
+                {b.scalpingAllowed && "Scalping Allowed"}
+              </div>
+              <a
+                href={b.affiliateLink}
+                target="_blank"
+                className="text-xs text-blue-500 hover:underline"
+              >
+                Visit
+              </a>
+            </div>
+          ))}
         </div>
       </motion.div>
     </aside>
