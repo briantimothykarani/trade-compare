@@ -382,8 +382,8 @@ const Chip = ({
 }) => (
   <button
     onClick={onClick}
-    className={`px-3 py-1 rounded-full  ${
-      active ? "bg-blue-500 text-white" : "bg-gray-200"
+    className={`px-3 py-1 rounded-full ${
+      active ? "bg-blue-500 text-green-500" : "bg-gray-200"
     }`}
   >
     {label.toUpperCase()} {active && "✕"}

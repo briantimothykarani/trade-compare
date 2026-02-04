@@ -162,7 +162,7 @@ const LandingPage = () => {
       {/* Get Started Button Below Logos */}
       <Link
         to="/brokers"
-        className="mt-10 mb-6 inline-block bg-blue-500 hover:bg-blue-600 text-white px-10 py-4 rounded-full text-xl font-semibold shadow-lg transition transform hover:scale-105"
+        className="mt-10 mb-6 inline-block bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-full text-xl font-semibold shadow-lg transition transform hover:scale-105"
       >
         Get Started Now
       </Link>

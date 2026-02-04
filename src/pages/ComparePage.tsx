@@ -1,7 +1,7 @@
 import brokers from "../data/brokers.json";
 import { useCompare } from "../hooks/useCompare";
 import { X } from "lucide-react";
-
+import { Link } from "react-router-dom";
 const ComparePage = () => {
   const { ids, toggle, clear } = useCompare();
 
@@ -9,9 +9,9 @@ const ComparePage = () => {
 
   if (selected.length < 2) {
     return (
-      <p className="text-center text-red-500 mt-20 text-xl">
-        Select at least 2 brokers to compare.
-      </p>
+      <Link to="/brokers" className="text-center text-red-500 mt-20 text-2xl">
+        Go backto home page
+      </Link>
     );
   }
 
@@ -102,7 +102,7 @@ const ComparePage = () => {
           onClick={clear}
           className="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-full transition"
         >
-          Clear Comparison
+          <Link to="/brokers">Clear Comparison</Link>
         </button>
       </div>
     </div>

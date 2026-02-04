@@ -35,9 +35,6 @@ const Footer = () => {
             <Link to="/brokers" className="hover:text-blue-500">
               Brokers
             </Link>
-            <Link to="/brokers/comparepage" className="hover:text-blue-500">
-              Compare
-            </Link>
           </div>
 
           {/* Social Media */}

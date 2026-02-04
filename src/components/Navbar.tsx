@@ -23,14 +23,10 @@ const Navbar = () => {
     <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
         <Link to="/" className="font-bold text-blue-500 text-xl">
-          Trade Compare
+          Broker Compare
         </Link>
 
         <div className="flex gap-6 items-center">
-          <Link to="/education" className="text-red-500 hover:text-blue-500">
-            Education
-          </Link>
-
           {/* 🌙 / ☀️ Theme Button */}
           <button
             onClick={toggleTheme}
