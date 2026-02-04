@@ -1,11 +1,14 @@
 import { useParams, useNavigate } from "react-router-dom";
 import brokers from "../data/brokers.json";
 import { Crown, AlertTriangle } from "lucide-react";
+import type { Broker } from "../types/broker";
 
 const BrokerCard = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const broker = (brokers as any[]).find((b) => b.id === id);
+
+  const brokersData = brokers as Broker[];
+  const broker = brokersData.find((b) => b.id === id);
 
   if (!broker) {
     return (
@@ -76,11 +79,11 @@ const BrokerCard = () => {
           <p>
             <strong>Platforms:</strong>{" "}
             {[
-              broker.platforms.mt4 && "MT4",
-              broker.platforms.mt5 && "MT5",
-              broker.platforms.ctrader && "cTrader",
+              broker.platforms.mt4 ? "MT4" : null,
+              broker.platforms.mt5 ? "MT5" : null,
+              broker.platforms.ctrader ? "cTrader" : null,
             ]
-              .filter(Boolean)
+              .filter((p): p is string => p !== null)
               .map((p) => (
                 <span
                   key={p}
